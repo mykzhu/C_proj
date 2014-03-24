@@ -13,7 +13,7 @@ main()
     {
       case '\b': printf("\\b");
 	break;
-      case '\n':printf("\\n");
+      case '\t':printf("\\t");
 	break;
       //case '\\':printf("\\");
 	//break;
