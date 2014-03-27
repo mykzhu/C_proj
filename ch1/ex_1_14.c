@@ -1,5 +1,5 @@
 //
-// gistogram of frequencies of words
+// gistogram of frequencies of sumbols
 //
 
 #include <stdio.h>
@@ -10,7 +10,9 @@
 
 main()
 {
-	char words[20][255],
+	// 65 - 122
+	
+	char words [58],
 		 c;
 	int col  = 0,
 		row  = 0,
@@ -18,40 +20,17 @@ main()
 		i    = 0,
 		freq = 0,
 		j    = 0;
-
+	for(i=0;i<=58;i++)
+	  words[i] = 0;
+	
 	while((c = getchar()) != EOF)
 	{
-		if((c == ' ') || (c == '\n') || (c == '\t'))
-		{
-			word = OUT;
-		}
-		else
-		{
-			word = IN;
-		}
-
-		if (word == IN)
-		{	
-			if (col == 0)
-				row++;
-			//printf("row = %d\n", row);
-			words[row][col] = c;
-			col++;
-			//printf("col = %d\n", col);
-		}
-		else if (word == OUT)
-			col = 0;
+	  words[c-65]++;
 	}
 
-	for (i = 1; i <= row; i++)
+	for(i=0;i<=58;i++)
 	{
-		printf("%s\n",&words[i][0]);
-		for (j = i+1; j <= row; j++)
-			if (strcmp(&words[i][0], &words[j][0]))
-				freq++;
-		printf("freq = %d\n", freq);
-		freq = 0;
+	  if(words[i] < 0) words[i] = 0;
+	  printf("%c = %d\n",i+65, words[i]);
 	}
-
-
 }
