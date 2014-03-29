@@ -6,25 +6,25 @@
 
 int strindex(char s[], char t[])
 {
-  int i,l,j,k,z;
+  int i,j,k, res = -1;
   
-  for(i = 0; s[i] != '\0'; i++)
-    ;
-  for(l = 0; t[l] != '\0'; l++)
-    ;
-  for(j=i;j!=0; j--)
+  for(i =0 ;s[i]!='\0'; i++)
   {
-    for(z=j,k=l; t[k] != t[0] && s[z] == t[k]; z--,k--)
+    for(j=i,k=0; t[k] != '\0' && s[j] == t[k]; j++, k++)
       ;
-    if( k>0 && t[k] == t[0])
-      return i;
+    if( k>0 && t[k] == '\0')
+    {
+      res = i;
+      continue;
+    }
   }
 
-  return -1;
+  return res;
 }
 
 int main()
 {
-  printf("result %d\n",strindex("kolka","ka"));
-  return -1;
+  printf("result %d\n",strindex("kakolka","ka"));
+  printf("result %d\n",strindex("kakolka","zuka"));
+  return 1;
 }
